@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body >
+    <div class="header">
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/home">FundREI</a>
+        <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/">Sign out</a>
+            </li>
+        </ul>
+        </nav>
+    </div>
+    <!-- <h3 class="welcome">Welcome {{ user.first_name }}!</h3><br> -->
+    <div class="container-fluid">
+        <div class="main">
+                <div class="side">
+                
+                <img class="logo" src="/static/img/logo2.png" alt="">
+                <div class="links">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/home">
+                    
+                            Featured <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/investments/{{ user.id }}">
+                    
+                            My Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add-project/">
+                    
+                            Start Project
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio/{{ user.id }}">
+                            My Portfolio
+                            
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                    
+                            Investor Reviews
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            </div>
+        <!-- </nav> -->
+        <!-- <div class="tabletop"> -->
+        <table class="table table-striped">
+            <thead class="thead">
+                <tr>
+                    <th>Property Name</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in user.projects.all %}
+                <tr>
+                    <td>{{ project.title }}</td>
+                    <td>{{ project.location }}</td>
+                    <td>
+                        <a href="">Edit</a> | 
+                        <a href="/project/{{ project.id }}/remove">Delete</a> | 
+                        <a href="">Manage Development Progress</a> |   
+                        <a href="">Submit Reports</a>
+                        <!-- <a href="/jobs/{{ job.id }}/edit">Edit</a>
+                        <a href="/jobs/add">Add</a> -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <!-- </div> -->
+            
+            
+        </div>
+        
+    </div>
+
+
+</body>
+</html>

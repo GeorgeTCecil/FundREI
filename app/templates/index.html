@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/home">FundREI</a>
+        <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+        <!-- <span class="user-head">{{ user.first_name }},</span> -->
+        <!-- <ul class="navbar-nav px-3">
+            
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/">Sign out</a>
+            </li>
+        </ul> -->
+        </nav>
+    </div>
+    <div class="signup">
+        <img class="sign-img" src="/static/img/how.png" alt="">
+        <div class="reg">
+            
+            <form class="text-center border border-light p-5" action="/reg_process" method="post">
+            {% csrf_token %}
+            <p class="h4 mb-4">Sign Up</p>
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- First name -->
+                    <input type="text" name="fname" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    <input type="text" name="lname" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                </div>
+            </div>
+                <!-- E-mail -->
+                <input type="email" name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                <!-- Password -->
+                <input type="password" name="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    At least 8 characters and 1 digit
+                </small>
+                <input type="password" name="conf_password" id="defaultRegisterFormPassword" class="form-control" placeholder="Confirm Password" aria-describedby="defaultRegisterFormPasswordHelpBlock"><br>
+            
+                <!-- Phone number -->
+                <!-- <input type="text" name="phone" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock"> -->
+
+            
+                <!-- Newsletter -->
+                <!-- <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+                    <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+                </div> -->
+            
+                <!-- Sign up button -->
+                <button class="btn btn-info my-4 btn-block" type="submit" value="Register">Sign Up</button>
+            
+                <!-- Social register -->
+                <!-- <p>or sign up with:</p>
+            
+                <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+            
+                <hr> -->
+            
+                <!-- Terms of service -->
+                
+                <p>By clicking
+                    <em>Sign up</em> you agree to our
+                    <a href="" >terms of service</a>
+            </form>
+            
+
+            <!--  -->
+            <!--  -->
+            <!--  --><!--  -->
+            <!--  -->
+            <!--  --><!--  -->
+            <!--  -->
+            <!--  -->
+            
+
+            <!-- -------------------------------------- -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            
+        </div>
+        <div class="login">
+            <form class="text-center border border-light p-5" action="/login_process" method ="post">
+              {% csrf_token %}
+              <p class="h4 mb-4">Sign in</p>
+              <!-- email -->
+              <input type="email" name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+              <!-- Password -->
+              <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                <!-- <div class="d-flex justify-content-around"> -->
+                  <!-- <div> -->
+                    <!-- Remember me -->
+                        <!-- <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                        </div> -->
+                    <!-- </div> -->
+                    <!-- <div> -->
+                        <!-- Forgot password -->
+                  <!-- <a href="">Forgot password?</a> -->
+                    <!-- </div> -->
+                
+            
+                <!-- Sign in button -->
+              <button class="btn btn-info btn-block my-4" type="submit"  value="Log In">Sign in</button>
+              
+              {% if messages %}
+              {% for message in messages%}
+              <p>{{message}}</p>
+              {% endfor %}
+              {% endif %}
+                      
+                <!-- Register -->
+                <!-- <p>Not a member?
+                    <a href="">Register</a>
+                </p> -->
+            
+                <!-- Social login -->
+                <!-- <p>or sign in with:</p>
+            
+                <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a> -->
+            
+            </form>
+            <!-- -------------------------------------- -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            
+        </div>
+    </div>
+    <div class="how">
+        <h1>Learn About Our REITs!</h1>
+        <div class="explain">
+            <img class="howimg" src="/static/img/how-to.jpg" alt="">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body >
+    <div class="header">
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/home">FundREI</a>
+        <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/">Sign out</a>
+            </li>
+        </ul>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <div class="main">
+            <!-- <div class="row"> -->
+                <!-- <nav class="sidenav col-md-2 d-none d-md-block bg-light sidebar"> -->
+                <!-- <div class="sidebar-sticky"> -->
+                    <div class="side">
+                        
+                        <img class="logo" src="/static/img/logo2.png" alt="">
+                    <div class="links">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/home">
+                        
+                                Featured <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/investments/{{ user.id }}">
+                        
+                                My Projects
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/add-project/">
+                        
+                                Start Project
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/portfolio/{{ user.id }}">
+                                My Portfolio
+                                
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                        
+                                Investor Reviews
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                </div>
+
+            
+        
+        <div class="information">
+            
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.location }}</p>
+            <img class="projectimg" src="{{ project.image.url}}" alt="">
+            <div class="content">
+                <div class="facts">
+                    <ul>
+                        <li><span class="bold">Developer: </span><span>{{ project.creator.first_name }} {{ project.creator.last_name }}</span></li>
+                        <li><span class="bold">Posted on: </span><span>{{ project.created_at|date:"M d, Y"  }}</span></li>
+                        <li><span class="bold">Amount to be Funded: </span><span>${{ project.price }}</span></li>
+                        <li><span class="bold">Projected ROI: </span><span>{{ project.roi }}</span></li>
+                    </ul>
+                </div>
+                <div class="desc">
+                    <p>{{ project.description }}</p>
+                </div>
+            </div>
+            {% if project.creator == user %}
+            <br><a href="/project/edit/{{project.id}}"><button class="btn btn-warning">Edit</button></a>
+            <a href="/project/{{ project.id }}/remove"><button class="btn btn-danger">Delete</button></a>
+            <button class="btn btn-info">View Investors</button>
+            {% else %}
+            <br><a href="/add_inv/{{ user.id }}/{{ project.id }}"><button class="btn btn-success">Invest</button></a>
+            {% endif %}
+
+            <!-- {% if project.invested_by == user.invested_projects %}
+            <button>Invest More</button>
+            {% endif %} -->
+
+        </div>
+        
+    </div>
+
+
+</body>
+</html>
